@@ -16,7 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.44.0</selenium.version>
         <testng.version>7.11.0</testng.version>
-        <suiteName>suite</suiteName>
         <allure.version>2.35.3</allure.version>
         <aspectj.version>1.9.25.1</aspectj.version>
     </properties>
@@ -63,11 +62,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.6</version>
+                <version>3.6.0</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>${suiteName}.xml</suiteXmlFile>
-                    </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
@@ -86,7 +82,6 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.12.0</version>
             </plugin>
-            <!-- NUEVO EN 7.3 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>

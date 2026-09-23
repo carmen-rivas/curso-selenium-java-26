@@ -28,7 +28,8 @@ public class LoginTest extends BaseTest {
                 "Debe mostrarse advertencia de credenciales inválidas");
     }
 
-    @Test
+    // NUEVO: groups = { "regresion", "formulario" } — antes no tenía groups.
+    @Test(groups = { "regresion", "formulario" })
     public void verificarAtributosDelFormulario() {
         driver.get(BASE_URL + "/index.php?route=account/login");
 

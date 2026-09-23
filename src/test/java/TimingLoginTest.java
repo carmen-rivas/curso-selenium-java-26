@@ -68,7 +68,7 @@ public class TimingLoginTest {
         WebElement mensajeError = wait
                 .withMessage("El mensaje de error no apareció en 10 segundos")
                 .until(ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector(".mensaje-que-no-existe")));
+                        By.cssSelector(".alert.alert-danger")));
 
         Assert.assertTrue(mensajeError.getText().contains("Warning"),
                 "Debe mostrarse el mensaje de credenciales inválidas");
