@@ -1,10 +1,11 @@
 package com.abstracta.cursoselenium.tests;
 
+import com.abstracta.cursoselenium.utils.ConfigReader;
+import com.abstracta.cursoselenium.utils.DriverFactory;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -18,16 +19,21 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    protected static final String BASE_URL = "https://opencart.abstracta.us";
+    // Ya no es "static final": se puebla en cada setUp() desde ConfigReader.
+    // Se mantiene el nombre BASE_URL a propósito -- ningún test existente
+    // que ya escribe "BASE_URL" necesita cambiar una sola línea
+    protected String BASE_URL;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        BASE_URL = ConfigReader.getBaseUrl();
+        int timeout = ConfigReader.getTimeout();
+
+        driver = DriverFactory.crearDriver(ConfigReader.getBrowser());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         driver.manage().window().maximize();
     }
 
-    // CAMBIO EN 7.2 — recibe ITestResult para saber si el test falló
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult resultado) {
         // Screenshot SOLO si el test falló, antes de cerrar el driver
