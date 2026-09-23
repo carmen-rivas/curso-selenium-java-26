@@ -1,0 +1,8 @@
+﻿<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="suite">
+    <test name="Suite Completa">
+        <packages>
+            <package name="com.abstracta.cursoselenium.tests"/>
+        </packages>
+    </test>
+</suite>

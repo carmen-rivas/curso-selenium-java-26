@@ -1,0 +1,16 @@
+# Build de Maven — NUNCA versionar
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Resultados y reportes (se regeneran)
+allure-results/
+allure-report/
+
+# Configuración local con datos sensibles
+config-local.properties
+
+# CLI de Allure descargado localmente por allure-maven (mvn allure:serve/report)
+.allure/
