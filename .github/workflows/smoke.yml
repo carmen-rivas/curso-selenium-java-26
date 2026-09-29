@@ -20,7 +20,7 @@ jobs:
           cache: maven          # cachea ~/.m2 — de 3-4 min a 30-60 s
 
       - name: Ejecutar smoke tests (headless)
-        run: mvn test -Denv=ci -Dgroups=smoke
+        run: mvn test -Denv=ci '-Dsurefire.suiteXmlFiles=smoke.xml'
 
       - name: Generar reporte Allure
         if: always()            # incluso si los tests fallaron
